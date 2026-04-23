@@ -48,7 +48,7 @@ Design choices worth flagging up front:
 ```bash
 cd w2120276
 mvn clean package
-# produces: target/new_cw-1.0-SNAPSHOT.war
+# produces: target/w2120276.war
 ```
 
 ### Deploy
@@ -56,13 +56,13 @@ mvn clean package
 Either open the project in NetBeans and choose **Run Project** (which deploys to the bundled GlassFish), or copy the `.war` into the container's `webapps/` directory. The default context root matches the artefact name, so the full base URL is:
 
 ```
-http://localhost:8080/new_cw-1.0-SNAPSHOT/api/v1
+http://localhost:8080/w2120276/api/v1
 ```
 
 A verification smoke test after deployment:
 
 ```bash
-curl -s http://localhost:8080/new_cw-1.0-SNAPSHOT/api/v1
+curl -s http://localhost:8080/w2120276/api/v1
 ```
 
 A 200 response containing the resources map confirms that the JAX-RS application has bootstrapped and classpath scanning has picked up the resource classes.
@@ -76,7 +76,7 @@ The three in-memory stores begin empty on every deployment. The curl sequence be
 The specification requires at least five. The twelve calls below cover discovery, happy-path CRUD, filtering, the sub-resource locator, and each of the three domain-specific error paths. They are designed to run end to end on a freshly deployed WAR.
 
 ```bash
-BASE="http://localhost:8080/new_cw-1.0-SNAPSHOT/api/v1"
+BASE="http://localhost:8080/w2120276/api/v1"
 ```
 
 ### 1. Discovery — API metadata and resource map (HATEOAS entry point)
@@ -267,8 +267,8 @@ HATEOAS (Hypermedia As The Engine Of Application State) is the practice of inclu
     "email": "methika.fernando@university.edu"
   },
   "resources": {
-    "rooms": "http://localhost:8080/new_cw-1.0-SNAPSHOT/api/v1/rooms",
-    "sensors": "http://localhost:8080/new_cw-1.0-SNAPSHOT/api/v1/sensors"
+    "rooms": "http://localhost:8080/w2120276/api/v1/rooms",
+    "sensors": "http://localhost:8080/w2120276/api/v1/sensors"
   }
 }
 ```
@@ -284,9 +284,9 @@ A fully HATEOAS-compliant individual resource response would extend this pattern
   "capacity": 40,
   "sensorIds": ["TEMP-001"],
   "_links": {
-    "self": "http://localhost:8080/new_cw-1.0-SNAPSHOT/api/v1/rooms/LIB-301",
-    "sensors": "http://localhost:8080/new_cw-1.0-SNAPSHOT/api/v1/sensors?roomId=LIB-301",
-    "collection": "http://localhost:8080/new_cw-1.0-SNAPSHOT/api/v1/rooms"
+    "self": "http://localhost:8080/w2120276/api/v1/rooms/LIB-301",
+    "sensors": "http://localhost:8080/w2120276/api/v1/sensors?roomId=LIB-301",
+    "collection": "http://localhost:8080/w2120276/api/v1/rooms"
   }
 }
 ```
