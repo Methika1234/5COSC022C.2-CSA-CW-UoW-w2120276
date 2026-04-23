@@ -8,9 +8,6 @@ A JAX-RS RESTful service developed for the University of Westminster "Smart Camp
 |-------|-------|
 | Module | 5COSC022W, Client Server Architectures |
 | Student ID | w2120276 |
-| Weighting | 60% of final mark |
-| Target mark band | Excellent (70%+) on every rubric row |
-| Submission | Public GitHub repository, PDF report (transcribed from this file), 10 minute video demonstration |
 
 This README serves two purposes. The top half is the GitHub-facing overview with build instructions and sample curl commands. Section 7 is the Conceptual Report required by the specification, which states: "the report must be organised and written in the README.md file on GitHub. The report must only include the answers to the questions in each part."
 
